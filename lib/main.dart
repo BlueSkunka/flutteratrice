@@ -60,7 +60,7 @@ class _CalculatriceState extends State<Calculatrice> {
 
   // Liste des opérateurs
   List<String> operators = ['/', '*', '-', '+'];
-  
+
   void pressedButton (String button) {
     setState(() {
       // Gestion de la saisis utilisateur
@@ -71,14 +71,21 @@ class _CalculatriceState extends State<Calculatrice> {
         case "=":
           // Calcul de la formule en utilisant maths_expression
           // Et ajout de la ofrmule à l'historique
-          ExpressionParser p = GrammarParser();
-          Expression exp = p.parse(output);
-          String historyLine = output;
-          output = exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
-          history.add("$historyLine = $output");
+          try {
+            ExpressionParser p = GrammarParser();
+            Expression exp = p.parse(output);
+            String historyLine = output;
+            output =
+                exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
+            history.add("$historyLine = $output");
 
-          // Gestion du booléen hasCalculated
-          hasCalculated = true;
+            // Gestion du booléen hasCalculated
+            hasCalculated = true;
+          } on Exception catch (_) {
+            SnackBar snackBar = SnackBar(content: Text("Une erreur est survenue !"));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            output = "0";
+          }
 
           // Trigger de l'animation en changeant la valeur du booléen
           animated = !animated;
