@@ -2,9 +2,6 @@
 
 Bonjour, calculatrice + flutter = flutteratrice, bonne journée.
 
-![flutteratrice.jpg](flutteratrice.jpg)
-
-
 ## Design
 
 Quelque chose à redire sur le choix des couleurs ? 
@@ -19,3 +16,8 @@ Pour ce premier projet, je trouve le code pas très propre, tout est dans un mê
 ## Erreur
 
 Si l'utilisateur saisis 2 opérateurs de suite avant de calculer (ex: "2+*4), une erreur est capturée, un message affiché en bas d'écran et la formule se réinitialise. 
+
+## Image
+
+![flutteratrice.jpg](flutteratrice.jpg)
+
